@@ -19,10 +19,9 @@ public class Book {
     private String genre;
 
     @ManyToMany(mappedBy = "borrowedItems")
-    @JsonIgnore // Prevents this field from being serialized
+    @JsonIgnore
     private List<LibraryUser> users = new ArrayList<>();
 
-    // Constructors, Getters, and Setters
     public Book() {}
 
     public Book(String isbn, String title, String author, String genre) {
