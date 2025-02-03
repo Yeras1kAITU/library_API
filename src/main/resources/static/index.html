@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Library Management System</h1>
+
+<!-- Buttons for GET Requests -->
+<div class="section">
+    <button onclick="getAllBooks()">Get All Books</button>
+    <button onclick="openSearchForm()">Search Books by Title</button>
+    <button onclick="openFilterForm()">Filter Books by Genre</button>
+    <button onclick="getAllUsers()">Get All Users</button>
+    <button onclick="openBorrowedBooksForm()">Get Borrowed Books by User</button>
+</div>
+
+<!-- Forms for POST Requests -->
+<div class="section">
+    <button onclick="openAddBookForm()">Add a Book</button>
+    <button onclick="openAddUserForm()">Add a User</button>
+    <button onclick="openBorrowBookForm()">Assign Book to User</button>
+</div>
+
+<!-- Forms for DELETE Requests -->
+<div class="section">
+    <button onclick="openDeleteBookForm()">Delete a Book</button>
+    <button onclick="openDeleteUserForm()">Delete a User</button>
+</div>
+
+<!-- Search Books Form -->
+<div id="search-form" class="form-container" style="display: none;">
+    <h3>Search Books by Title</h3>
+    <input type="text" id="search-keyword" placeholder="Enter title keyword...">
+    <button onclick="searchBooks()">Search</button>
+    <button onclick="closeForm('search-form')">Close</button>
+</div>
+
+<!-- Filter Books Form -->
+<div id="filter-form" class="form-container" style="display: none;">
+    <h3>Filter Books by Genre</h3>
+    <input type="text" id="filter-genre" placeholder="Enter genre...">
+    <button onclick="filterBooks()">Filter</button>
+    <button onclick="closeForm('filter-form')">Close</button>
+</div>
+
+<!-- Add Book Form -->
+<div id="add-book-form" class="form-container" style="display: none;">
+    <h3>Add a Book</h3>
+    <input type="text" id="book-isbn" placeholder="ISBN">
+    <input type="text" id="book-title" placeholder="Title">
+    <input type="text" id="book-author" placeholder="Author">
+    <input type="text" id="book-genre" placeholder="Genre">
+    <button onclick="addBook()">Add Book</button>
+    <button onclick="closeForm('add-book-form')">Close</button>
+</div>
+
+<!-- Add User Form -->
+<div id="add-user-form" class="form-container" style="display: none;">
+    <h3>Add a User</h3>
+    <input type="text" id="user-id" placeholder="User ID">
+    <input type="text" id="user-name" placeholder="Name">
+    <button onclick="addUser()">Add User</button>
+    <button onclick="closeForm('add-user-form')">Close</button>
+</div>
+
+<!-- Borrow Book Form -->
+<div id="borrow-book-form" class="form-container" style="display: none;">
+    <h3>Assign Book to User</h3>
+    <input type="text" id="borrow-user-id" placeholder="User ID">
+    <input type="text" id="borrow-isbn" placeholder="Book ISBN">
+    <button onclick="assignBookToUser()">Assign Book</button>
+    <button onclick="closeForm('borrow-book-form')">Close</button>
+</div>
+
+<!-- Get Borrowed Books Form -->
+<div id="borrowed-books-form" class="form-container" style="display: none;">
+    <h3>Get Borrowed Books by User</h3>
+    <input type="text" id="borrowed-books-user-id" placeholder="User ID">
+    <button onclick="getBorrowedBooks()">Get Books</button>
+    <button onclick="closeForm('borrowed-books-form')">Close</button>
+</div>
+
+<!-- Delete Book Form -->
+<div id="delete-book-form" class="form-container" style="display: none;">
+    <h3>Delete a Book</h3>
+    <input type="text" id="delete-book-isbn" placeholder="Book ISBN">
+    <button onclick="deleteBook()">Delete Book</button>
+    <button onclick="closeForm('delete-book-form')">Close</button>
+</div>
+
+<!-- Delete User Form -->
+<div id="delete-user-form" class="form-container" style="display: none;">
+    <h3>Delete a User</h3>
+    <input type="text" id="delete-user-id" placeholder="User ID">
+    <button onclick="deleteUser()">Delete User</button>
+    <button onclick="closeForm('delete-user-form')">Close</button>
+</div>
+
+<!-- Results Section -->
+<div id="results-container">
+    <h2>Results</h2>
+    <div id="results"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

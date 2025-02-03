@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:63342")
 public class UserController {
     private final UserRepository userRepository;
     private final BookRepository bookRepository;
