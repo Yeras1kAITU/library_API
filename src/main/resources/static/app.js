@@ -16,7 +16,7 @@ function displayResults(data, title) {
                     const bookList = document.createElement('ul');
                     item[key].forEach(book => {
                         const bookItem = document.createElement('li');
-                        bookItem.innerHTML = `<strong>Title:</strong> ${book.title}, <strong>Author:</strong> ${book.author}, <strong>ISBN:</strong> ${book.isbn}`;
+                        bookItem.innerHTML = `<strong>Title:</strong> ${book.title}<br><strong>Author:</strong> ${book.author}<br><strong>ISBN:</strong> ${book.isbn}<br><strong>Genre:</strong> ${book.genre}`;
                         bookList.appendChild(bookItem);
                     });
                     p.appendChild(bookList);
@@ -49,7 +49,7 @@ function displayResults(data, title) {
                 const bookList = document.createElement('ul');
                 data[key].forEach(book => {
                     const bookItem = document.createElement('li');
-                    bookItem.innerHTML = `<strong>Title:</strong> ${book.title}, <strong>Author:</strong> ${book.author}, <strong>ISBN:</strong> ${book.isbn}`;
+                    bookItem.innerHTML = `<strong>Title:</strong> ${book.title}<br><strong>Author:</strong> ${book.author}<br><strong>ISBN:</strong> ${book.isbn}<br><strong>Genre:</strong> ${book.genre}`;
                     bookList.appendChild(bookItem);
                 });
                 p.appendChild(bookList);

@@ -15,7 +15,7 @@ public class LibraryUser {
     @JoinTable(
             name = "borrowed_books",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id",  referencedColumnName = "id")
+            inverseJoinColumns = @JoinColumn(name = "book_id",  referencedColumnName = "isbn")
     )
     private List<Book> borrowedItems = new ArrayList<>();
     // Constructors, Getters, and Setters

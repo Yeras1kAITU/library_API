@@ -1,5 +1,10 @@
 package yeras1k.project.library.controller;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Selection;
 import yeras1k.project.library.model.Book;
 import yeras1k.project.library.model.LibraryUser;
 import yeras1k.project.library.repository.BookRepository;
@@ -38,14 +43,22 @@ public class UserController {
         userRepository.deleteById(userId);
     }
 
+    @PersistenceContext
+    private EntityManager entityManager;
     // Assign a book to a user
     @PostMapping("/{userId}/borrow")
     public void assignBorrowedBook(@PathVariable String userId, @RequestParam String isbn) {
-        LibraryUser user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        Book book = bookRepository.findById(isbn).orElseThrow(() -> new RuntimeException("Book not found"));
+        LibraryUser user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Use the custom method instead of findById()
+        Book book = bookRepository.findByIsbn(isbn)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+
         user.getBorrowedItems().add(book);
         userRepository.save(user);
     }
+
 
     // Get borrowed books by a user
     @GetMapping("/{userId}/borrowed-books")

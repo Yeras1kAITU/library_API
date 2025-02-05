@@ -1,6 +1,7 @@
 package yeras1k.project.library.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import yeras1k.project.library.model.Book;
 import yeras1k.project.library.repository.BookRepository;
 import org.springframework.web.bind.annotation.*;
@@ -29,11 +30,13 @@ public class BookController {
 
     // Delete a book by ISBN
     @DeleteMapping("/{isbn}")
-    public void deleteBook(@PathVariable String isbn) {
-        bookRepository.deleteById(isbn);
+    public ResponseEntity<String> deleteBook(@PathVariable String isbn) {
+        bookRepository.deleteByIsbn(isbn);
+        return ResponseEntity.ok("Book deleted successfully");
     }
 
-    // Search books by title
+
+        // Search books by title
     @GetMapping("/search")
     public List<Book> searchBooksByTitle(@RequestParam String keyword) {
         return bookRepository.findByTitleContainingIgnoreCase(keyword);
