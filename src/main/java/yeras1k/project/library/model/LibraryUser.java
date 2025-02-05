@@ -18,7 +18,7 @@ public class LibraryUser {
             inverseJoinColumns = @JoinColumn(name = "book_id",  referencedColumnName = "isbn")
     )
     private List<Book> borrowedItems = new ArrayList<>();
-    // Constructors, Getters, and Setters
+
     public LibraryUser() {}
 
     public LibraryUser(String userId, String name) {

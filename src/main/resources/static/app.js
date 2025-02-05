@@ -10,7 +10,7 @@ function displayResults(data, title) {
             for (const key in item) {
                 const p = document.createElement('p');
 
-                // Handle borrowedItems (list of books) separately
+                // Handle borrowedItems separately
                 if (key === 'borrowedItems' && Array.isArray(item[key])) {
                     p.textContent = `${key}:`;
                     const bookList = document.createElement('ul');
@@ -27,7 +27,6 @@ function displayResults(data, title) {
                 card.appendChild(p);
             }
 
-            // Add a close button to the card
             const closeButton = document.createElement('button');
             closeButton.className = 'close-button';
             closeButton.textContent = 'Close';
@@ -43,7 +42,6 @@ function displayResults(data, title) {
         for (const key in data) {
             const p = document.createElement('p');
 
-            // Handle borrowedItems (list of books) separately
             if (key === 'borrowedItems' && Array.isArray(data[key])) {
                 p.textContent = `${key}:`;
                 const bookList = document.createElement('ul');
@@ -60,7 +58,6 @@ function displayResults(data, title) {
             card.appendChild(p);
         }
 
-        // Add a close button to the card
         const closeButton = document.createElement('button');
         closeButton.className = 'close-button';
         closeButton.textContent = 'Close';
@@ -71,12 +68,10 @@ function displayResults(data, title) {
     }
 }
 
-// Function to close forms
 function closeForm(formId) {
     document.getElementById(formId).style.display = 'none';
 }
 
-// Function to open forms
 function openSearchForm() {
     document.getElementById('search-form').style.display = 'block';
 }
@@ -109,7 +104,6 @@ function openDeleteUserForm() {
     document.getElementById('delete-user-form').style.display = 'block';
 }
 
-// API Functions
 function getAllBooks() {
     fetch('http://localhost:8080/books')
         .then(response => response.json())

@@ -12,8 +12,10 @@ import java.util.Optional;
 public interface BookRepository extends JpaRepository<Book, String> {
     List<Book> findByTitleContainingIgnoreCase(String keyword);
     List<Book> findByGenreIgnoreCase(String genre);
+
     @Query("SELECT b FROM Book b WHERE b.isbn = :isbn")
     Optional<Book> findByIsbn(@Param("isbn") String isbn);
+
     @Modifying
     @Transactional
     @Query("DELETE FROM Book b WHERE b.isbn = :isbn")
